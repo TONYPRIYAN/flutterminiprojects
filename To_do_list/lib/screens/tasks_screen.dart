@@ -11,7 +11,8 @@ class TaskScreen extends StatelessWidget {
         child: Column(
           children: [
             Icon(Icons.list),
-            Text('Todey'),
+            Text('Todo'),
+
             
           ],
         ),
