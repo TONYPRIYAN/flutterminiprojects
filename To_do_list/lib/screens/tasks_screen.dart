@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../Widgets/task_list.dart';
 
 class TaskScreen extends StatelessWidget {
-  const TaskScreen({super.key});
 
 
   @override
@@ -15,7 +14,7 @@ class TaskScreen extends StatelessWidget {
         child: Icon(Icons.add),
         
         onPressed: () {
-          //New tasks to be added
+          showModalBottomSheet(context: context, builder:(context) => Container());
 
       },),
       body: Column(
