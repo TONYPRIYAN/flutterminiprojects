@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Widgets/task_list.dart';
+
 class TaskScreen extends StatelessWidget {
   const TaskScreen({super.key});
 
@@ -13,6 +15,7 @@ class TaskScreen extends StatelessWidget {
         child: Icon(Icons.add),
         
         onPressed: () {
+          //New tasks to be added
 
       },),
       body: Column(
@@ -64,30 +67,5 @@ class TaskScreen extends StatelessWidget {
 
 }
 
-class TasksList extends StatelessWidget {
 
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TaskTile(),
-        TaskTile(),
-        TaskTile(),
-      ],
-
-
-    );
-  }
-}
-class TaskTile extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('This is a task'),
-      trailing: Checkbox(value: false, onChanged:(bool){},),
-    );
-  }
-}
