@@ -16,7 +16,7 @@ class AddTaskScreen extends StatelessWidget {
           children: [
             Text(textAlign: TextAlign.center,'Add Task',style: TextStyle(fontSize: 30,color: Colors.lightBlueAccent),),
             TextField(
-              
+
               autofocus: true,
               textAlign: TextAlign.center,
               style: TextStyle(
