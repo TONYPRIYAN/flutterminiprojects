@@ -1,35 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:to_do_list/Widgets/task_tile.dart';
 import '../model/task.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list/model/task_data.dart';
 
-class TasksList extends StatefulWidget {
-
-  late final List<Task> tasks;
-
-  TasksList({required this.tasks});
-
-
-  @override
-  _TasksListState createState() => _TasksListState();
-}
-
-class _TasksListState extends State<TasksList>{
-
-
+class TasksList extends StatelessWidget {
 
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder:(context,index){
-      return TaskTile(isChecked:widget.tasks[index].isDone , taskTitle: widget.tasks[index].name,
-        checkboxCallback: (bool? checkboxState) {
-          setState(() {
-            widget.tasks[index].toggleDone();
-          });
-        }
-      );
+    return Consumer<TaskData>(
+      builder: (BuildContext context, taskData, Widget? child) {
+        return ListView.builder(itemBuilder:(context,index){
+          return TaskTile(isChecked:taskData.tasks[index].isDone , taskTitle: taskData.tasks[index].name,
+              checkboxCallback: (bool? checkboxState) {
+                // setState(() {
+                //   Provider.of<TaskData>(context).tasks[index].toggleDone();
+                // });
+              }
+          );
+        },itemCount:taskData.taskCount,
+        );
+      },
 
-    },itemCount: widget.tasks.length,
     );
   }
 }
