@@ -39,27 +39,31 @@ class AddTaskScreen extends StatelessWidget {
                 newTaskTitle = newText;
               },
             ),
-            TextButton(
-              child: Text(
-                'Add',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
-                shape: MaterialStateProperty.all<OutlinedBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+            Consumer<TaskData>(
+              builder: (BuildContext context, TaskData taskData, Widget? child) {
+                return TextButton(
+                  child: Text(
+                    'Add',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ),
-
-              onPressed: () {
-                Provider.of<TaskData>(context).addTask(newTaskTitle);
-                Navigator.pop(context);
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    taskData.addTask(newTaskTitle);
+                    Navigator.pop(context);
+                  },
+                );
               },
             ),
+
           ],
         ),
       ),
